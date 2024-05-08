@@ -1,0 +1,40 @@
+---
+import Arrow from './icons/Arrow.astro';
+
+interface Props {
+  route: string[];
+}
+
+const { route } = Astro.props;
+---
+
+<div class='breadcrums'>
+  {
+    route.map((name: string, index) => {
+      return (
+        <>
+          <span>{name}</span>
+          {index + 1 < route.length ? <Arrow position='right transparent small' /> : null}
+        </>
+      );
+    })
+  }
+</div>
+<style lang='scss'>
+  .breadcrums {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 20px;
+    padding-left: 10px;
+    background-color: var(--black2);
+    padding-top: 5px;
+    span {
+      color: var(--text2);
+    }
+    .arrow {
+      background-color: transparent !important;
+    }
+  }
+</style>

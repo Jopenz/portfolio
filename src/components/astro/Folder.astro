@@ -1,0 +1,206 @@
+---
+import FileIcon from '@components/react/icons/FileIcon';
+import Arrow from './icons/Arrow.astro';
+
+interface DirectoryItemProps {
+  deep?: number;
+  name?: string;
+  icon?: string;
+  link?: string;
+  items?: DirectoryItemProps[];
+}
+
+const { name, deep = 0, icon, link, items } = Astro.props;
+
+const classes = ['directory-item'];
+
+if (items) {
+  classes.push('folder');
+}
+
+if (deep) {
+  classes.push(`deep-${deep}`);
+}
+---
+
+<astro-folder>
+  <li id={`item-${name}`} class={classes.join(' ')}>
+    {
+      items && items.length > 0 ? (
+        <>
+          <div class='arrow-top'>
+            <Arrow position={'top'} />
+          </div>
+          <div class='arrow-bottom show'>
+            <Arrow position={'bottom'} />
+          </div>
+        </>
+      ) : null
+    }
+    {
+      link ? (
+        <a class='' href={link}>
+          {icon ? <FileIcon icon={icon} /> : null}
+          <span>{name}</span>
+        </a>
+      ) : (
+        <div class='floder'>
+          {icon ? <FileIcon icon={icon} /> : null}
+          <span>{name}</span>
+        </div>
+      )
+    }
+  </li>
+  {
+    items && items.length > 0 ? (
+      <>
+        <ul class='open'>
+          {items
+            ? items.map((item: DirectoryItemProps) => <Astro.self deep={deep + 1} name={item.name} icon={item.icon} link={item.link} items={item.items} />)
+            : null}
+        </ul>
+        <div class={`close close-${deep} open`} />
+      </>
+    ) : null
+  }
+</astro-folder>
+<script>
+  class DirectoryItem extends HTMLElement {
+    constructor() {
+      super();
+      let open = true;
+
+      const itemButton = this.querySelector('li');
+      if (itemButton) {
+        itemButton.addEventListener('click', () => {
+          const liElement = this.querySelector('li');
+          const arrowTopElement = this.querySelector('.arrow-top');
+          const arrowBottomElement = this.querySelector('.arrow-bottom');
+          const closeElement = this.querySelector('.close');
+          console.log(closeElement);
+          const ulElement = this.querySelector('ul');
+          open = !open;
+
+          if (arrowTopElement && arrowBottomElement && liElement && closeElement && ulElement) {
+            if (open) {
+              liElement.classList.add('open');
+              arrowBottomElement.classList.add('show');
+              arrowTopElement.classList.remove('show');
+              closeElement.classList.add('open');
+              ulElement.classList.add('open');
+            } else {
+              liElement.classList.remove('open');
+              arrowBottomElement.classList.remove('show');
+              arrowTopElement.classList.add('show');
+              closeElement.classList.remove('open');
+              ulElement.classList.remove('open');
+            }
+          }
+        });
+      }
+    }
+  }
+  customElements.define('astro-folder', DirectoryItem);
+</script>
+<style lang='scss'>
+  .directory-item {
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    user-select: none;
+    position: relative;
+    a {
+      display: flex;
+      flex-direction: row;
+      margin-top: 3px;
+    }
+    .floder {
+      display: flex;
+      flex-direction: row;
+    }
+    span {
+      color: var(--text);
+    }
+    .arrow-top {
+      background-color: var(--black1);
+      display: none;
+      &.show {
+        display: block;
+      }
+    }
+    .arrow-bottom {
+      background-color: var(--black1);
+      display: none;
+      &.show {
+        display: block;
+      }
+    }
+    &:hover {
+      background-color: var(--grey2);
+      .arrow-bottom {
+        background-color: transparent;
+      }
+      .arrow-top {
+        background-color: transparent;
+      }
+    }
+    &.folder {
+      cursor: pointer;
+    }
+  }
+  ul {
+    display: none;
+    &.open {
+      display: block;
+    }
+  }
+  .deep-1 {
+    padding-left: 20px;
+  }
+  .deep-2 {
+    padding-left: 45px;
+  }
+  .deep-3 {
+    padding-left: 70px;
+  }
+  .deep-4 {
+    padding-left: 95px;
+  }
+  .deep-1.folder {
+    padding-left: 13px;
+  }
+  .deep-2.folder {
+    padding-left: 30px;
+  }
+  .deep-3.folder {
+    padding-left: 45px;
+  }
+  .close {
+    position: absolute;
+    height: 100%;
+    background-color: var(--black1);
+    z-index: 5;
+    display: none;
+    z-index: 999;
+    &.open {
+      display: block;
+    }
+  }
+  .close-1 {
+    margin-left: 20px;
+    width: calc(100% - 20px);
+  }
+  .close-2 {
+    margin-left: 45px;
+    width: calc(100% - 45px);
+  }
+  .close-3 {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+  }
+  .close-4 {
+    margin-left: 95px;
+    width: calc(100% - 95px);
+  }
+</style>

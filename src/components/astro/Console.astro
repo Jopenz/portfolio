@@ -1,0 +1,23 @@
+---
+import { Terminal } from 'xterm';
+
+// const term = new Terminal();
+// const terminalElement = document.getElementById('terminal');
+// if (terminalElement) {
+//   term.open(terminalElement);
+// }
+---
+
+<section class='console'>
+  <div id='terminal'></div>
+</section>
+<style>
+  .console {
+    width: 100%;
+    height: 250px;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid var(--grey);
+    background-color: var(--background);
+  }
+</style>

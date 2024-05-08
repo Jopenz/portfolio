@@ -1,0 +1,47 @@
+<div class='icon'>
+  <svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <g clip-path='url(#clip0_227_682)'>
+      <path d='M0.444452 18.4309L8.29188 10.7465' stroke-width='1.99941' stroke-miterlimit='10'></path>
+      <path
+        d='M12.0101 12.562C15.0338 12.5938 17.5114 10.0973 17.5441 6.98599C17.5767 3.87468 15.1521 1.32673 12.1285 1.29498C9.10482 1.26323 6.6272 3.7597 6.59453 6.87101C6.56186 9.98232 8.98651 12.5303 12.0101 12.562Z'
+        stroke-width='1.99941'
+        stroke-miterlimit='10'></path>
+    </g>
+    <defs>
+      <clipPath id='clip0_227_682'>
+        <rect width='18.8846' height='18.8846' fill='white' transform='translate(0.198242) rotate(0.601638)'></rect>
+      </clipPath>
+    </defs>
+  </svg>
+</div>
+<style>
+  .icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    border-left: 4px var(--black1) solid;
+    cursor: pointer;
+  }
+  .selected {
+    border-left: 4px var(--tag) solid;
+  }
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+  path {
+    stroke: var(--grey);
+  }
+  rect {
+    stroke: var(--grey);
+  }
+  .selected path {
+    stroke: var(--text);
+  }
+  .selected rect {
+    stroke: var(--text);
+  }
+</style>

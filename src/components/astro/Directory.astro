@@ -1,0 +1,45 @@
+---
+import directory from '@data/directory.json';
+// import Folder from '@components/react/Folder';
+import Folder from './Folder.astro';
+
+interface Props {}
+---
+
+<div class='directory'>
+  <ul>
+    <Folder client:load name='ADRIAN MARTINEZ' items={directory.items} />
+  </ul>
+  <div class='line line-1'></div>
+  <div class='line line-2'></div>
+  <div class='line line-3'></div>
+  <div class='line line-4'></div>
+</div>
+
+<style>
+  .directory {
+    position: relative;
+    height: 100%;
+  }
+  .line {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    height: 100%;
+    border-left: 0.5px solid;
+    border-color: var(--grey2);
+    display: none;
+  }
+  .directory:hover .line {
+    display: block;
+  }
+  .line-1 {
+    margin-left: 25px;
+  }
+  .line-2 {
+    margin-left: 42px;
+  }
+  .line-3 {
+    margin-left: 57px;
+  }
+</style>

@@ -1,0 +1,17 @@
+{
+  "$schema": "vscode://schemas/color-theme",
+  "type": "dark",
+  "colors": {
+    "activityBar.activeBorder": "#ffcc66",
+    "activityBar.background": "#1f2430",
+    "activityBar.border": "#1f2430",
+    "activityBar.foreground": "#707a8ccc",
+    "activityBar.inactiveForeground": "#707a8c99",
+    "activityBarBadge.background": "#ffcc66",
+    "activityBarBadge.foreground": "#805500",
+    "badge.background": "#ffcc6633",
+    "badge.foreground": "#ffcc66",
+    "button.background": "#ffcc66",
+  }
+  // abbreviated for readability
+}

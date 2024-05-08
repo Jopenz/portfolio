@@ -1,0 +1,141 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '@fontsource/poppins';
+import Header from '../components/astro/Header.astro';
+import Navbar from '../components/astro/Navbar.astro';
+import Footer from '../components/astro/Footer.astro';
+import Tab from '@components/astro/Tab.astro';
+import Console from '@components/astro/Console.astro';
+import type { MarkdownLayoutProps } from 'astro';
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+  breadcrums: string[];
+  code: string;
+  icon: string;
+}>;
+
+const { frontmatter } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en' transition:animate='fade'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content='Astro description' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <ViewTransitions />
+    <title>{frontmatter.title}</title>
+  </head>
+  <body>
+    <Header />
+    <div class='content'>
+      <Navbar />
+      <main>
+        <Tab title={frontmatter.title} icon={frontmatter.icon} breadcrums={frontmatter.breadcrums}>
+          <slot />
+        </Tab>
+        <Console />
+      </main>
+    </div>
+    <Footer />
+    <style is:global>
+      :root {
+        --background: #171717;
+        --black1: #1c1b1b;
+        --black2: #262626;
+        --grey: rgba(255, 255, 255, 0.3);
+        --grey2: rgba(255, 255, 255, 0.1);
+        --tag: #1f9cf0;
+        --vars: #83dcfe;
+        --string: #ce834a;
+        --text: rgba(255, 255, 255, 0.8);
+        --text2: rgba(255, 255, 255, 0.5);
+      }
+      html {
+        font-family: 'Poppins', sans-serif;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        font-size: 13px;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        background: var(--background);
+      }
+      .content {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        flex: 1 1 auto;
+        overflow: hidden;
+        border-top: 1px var(--grey) solid;
+      }
+      main {
+        width: 100%;
+      }
+      figure {
+        height: 100%;
+        overflow-y: auto;
+      }
+      pre {
+        height: 100%;
+        background-color: var(--black2) !important;
+      }
+      pre > code {
+        background-color: var(--black2) !important;
+      }
+      h6 {
+        color: var(--text);
+        letter-spacing: 0.9px;
+      }
+      p {
+        color: var(--text);
+      }
+      div[data-rehype-pretty-code-fragment] {
+        background-color: #111;
+      }
+      pre > code {
+        display: grid;
+        background-color: rgba(200, 200, 255, 0.09);
+      }
+      .highlighted {
+        background-color: rgba(200, 200, 255, 0.1);
+        border-left-color: #60a5fa;
+        border-left-width: 3px;
+        border-left-style: solid;
+      }
+      code {
+        counter-reset: line;
+      }
+
+      code > [data-line]::before {
+        counter-increment: line;
+        content: counter(line);
+
+        /* Other styling */
+        display: inline-block;
+        width: 1rem;
+        margin-right: 2rem;
+        text-align: right;
+        color: gray;
+      }
+
+      code[data-line-numbers-max-digits='2'] > [data-line]::before {
+        width: 2rem;
+      }
+
+      code[data-line-numbers-max-digits='3'] > [data-line]::before {
+        width: 3rem;
+      }
+    </style>
+  </body><!-- <Tab code={code} icon='html' name='home.html' breadcrums={['Adrian Martinez', 'Porfolio', 'home.html']} /> -->
+</html>

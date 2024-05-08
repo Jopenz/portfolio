@@ -1,0 +1,72 @@
+{
+    "items": [
+        {
+            "name": "Portfolio",
+            "icon": "folder",
+            "link": "",
+            "items": [
+                {
+                    "name": "homde.html",
+                    "icon": "html",
+                    "link": "home"
+                },
+                {
+                    "name": "README.md",
+                    "icon": "markdown",
+                    "link": "readme"
+                },
+                {
+                    "name": "My Work",
+                    "icon": "folder",
+                    "link": "",
+                    "items": [
+                        {
+                            "name": "avatar.jsx",
+                            "icon": "react",
+                            "link": "avatar"
+                        },
+                        {
+                            "name": "aboutMe.astro",
+                            "icon": "astro",
+                            "link": "aboutme"
+                        },
+                        {
+                            "name": "Colaborations",
+                            "icon": "folder",
+                            "link": "",
+                            "items": [
+                                {
+                                    "name": "cbdfx.php",
+                                    "icon": "php",
+                                    "link": "cbdfx"
+                                },
+                                {
+                                    "name": "tcbStorefront.php",
+                                    "icon": "php",
+                                    "link": "storefront"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Design",
+                            "icon": "folder",
+                            "link": "",
+                            "items": [
+                                {
+                                    "name": "mercoimpress.png",
+                                    "icon": "png",
+                                    "link": "mercoimpress"
+                                },
+                                {
+                                    "name": "leapMotors.png",
+                                    "icon": "png",
+                                    "link": "leapmotors"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

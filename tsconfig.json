@@ -1,0 +1,23 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "target": "ES2021",
+    "module": "ES2020",
+    "lib": ["ES2020", "DOM", "WebWorker"],
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "paths": {
+      "@components/react/*": ["src/components/react/*"],
+      "@components/astro/*": ["src/components/astro/*"],
+      "@root/*": ["src/*"],
+      "@assets/*": ["public/assets/*"],
+      "@public/*": ["public/*"],
+      "@data/*": ["src/data/*"],
+    },
+  },
+  "exclude": ["node_modules"],
+}

@@ -1,0 +1,41 @@
+---
+import { Prism } from '@astrojs/prism';
+import './dark.css';
+
+interface Props {
+  code?: string;
+  lang?: string;
+  filename?: string;
+}
+
+const { code, lang } = Astro.props;
+---
+
+<div class='editor'>
+  <div class='inner'>
+    <figure class='code-block'>
+      <!-- <Prism code={code} lang={lang} /> -->
+    </figure>
+  </div>
+</div>
+<style lang='scss'>
+  .editor {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--black2);
+    overflow: auto;
+    .inner {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      padding-top: 10px;
+      .code-block {
+        width: 100%;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+import FileIcon from '@components/react/icons/FileIcon';
+import Close from '@components/astro/icons/Close.astro';
+import Breadcrums from './Breadcrums.astro';
+import Editor from './editor/Editor.astro';
+
+interface Props {
+  icon: string;
+  title: string;
+  breadcrums: string[];
+}
+
+const { icon, title, breadcrums } = Astro.props;
+---
+
+<aside class='tab'>
+  <div class='tab-header'>
+    <FileIcon icon={icon} />
+    <span>{title}</span>
+    <a href='/'>
+      <Close />
+    </a>
+  </div>
+  <div class='tab-content'>
+    <Breadcrums route={breadcrums} />
+    <slot />
+  </div>
+</aside>
+<style lang='scss'>
+  .tab {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .tab-header {
+      padding-left: 10px;
+      padding-right: 10px;
+      display: flex;
+      align-items: center;
+      height: 40px;
+      color: var(--text);
+      border-top: 1px var(--tag) solid;
+      border-right: 1px var(--grey2) solid;
+      background-color: var(--black2);
+      position: absolute;
+      span {
+        margin-right: 2px;
+      }
+      cursor: pointer;
+    }
+    .tab-content {
+      padding-top: 40px;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
+  }
+</style>

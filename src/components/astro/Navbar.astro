@@ -1,0 +1,55 @@
+---
+import Code from '@components/astro/icons/Code.astro';
+import Search from '@components/astro/icons/Search.astro';
+import Extensions from '@components/astro/icons/Extensions.astro';
+import Account from '@components/astro/icons/Account.astro';
+import Settings from '@components/astro/icons/Settings.astro';
+import DotDot from '@components/astro/icons/DotDot.astro';
+import Directory from '@components/astro/Directory.astro';
+
+interface Props {}
+---
+
+<section id='sidebar'>
+  <div id='icons-bar'>
+    <div>
+      <Code />
+      <Search />
+      <Extensions />
+    </div>
+    <div>
+      <Account />
+      <Settings />
+    </div>
+  </div>
+  <div id='directory'>
+    <div class='flex flex-row w-full justify-between px-8 pt-3 cursor-auto'>
+      <h6 class='select-none'>EXPLORER</h6>
+      <DotDot />
+    </div>
+    <Directory />
+  </div>
+</section>
+<style>
+  #sidebar {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    background-color: var(--black1);
+  }
+  #icons-bar {
+    width: 60px;
+    height: 100%;
+    border-right: 1px var(--grey) solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #directory {
+    width: 300px;
+    height: 100%;
+    border-right: 1px var(--grey) solid;
+    display: flex;
+    flex-direction: column;
+  }
+</style>
